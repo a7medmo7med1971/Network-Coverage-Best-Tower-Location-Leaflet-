@@ -4,7 +4,7 @@ body {
   padding: 0px;
 }
 #map {
-  height: 92.4vh;
+  height: 92vh;
   width: 100%;
   position: relative;
 }
@@ -117,7 +117,7 @@ section.two.m-2.text-center {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 20%;
+  top: 15%;
   left: 3%;
   right: 3%;
   bottom: 2%;
