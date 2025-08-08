@@ -4,7 +4,7 @@ body {
   padding: 0px;
 }
 #map {
-  height: 94.8vh;
+  height: 92.4vh;
   width: 100%;
   position: relative;
 }
@@ -20,9 +20,11 @@ body {
 
 #sidebar.hidden {
   transform: translateX(100%);
+
 }
 div#sidebar {
   background-color: aliceblue;
+
 }
 
 /* bestRouting */
@@ -115,15 +117,17 @@ section.two.m-2.text-center {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 11%;
+  top: 15%;
   left: 3%;
   right: 3%;
   bottom: 2%;
   z-index: 1000;
+  
 }
 div#card {
   --bs-bg-opacity: 1;
   background-color: rgb(255 255 255 / 89%);
+     
 }
 h5.fw-bold.mb-2 {
   color: #000000;
@@ -231,4 +235,23 @@ p.mb-0.small.text-muted {
   0% {
     transform: scale(1);
   }
+}
+/* Sidebar */
+#sidebar {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+#sidebar h5 {
+    font-size: 1rem;
+    color: #333;
+}
+#sidebar select, 
+#sidebar input {
+    font-size: 0.9rem;
+}
+#sidebar button {
+    font-size: 0.85rem;
 }
