@@ -1,47 +1,44 @@
+/* === Base Styles === */
 body {
   overflow-x: hidden;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
+
 #map {
-  height: 92vh;
+  height: 90vh;
   width: 100%;
   position: relative;
 }
 
-/* zoomBtn my location */
-#zoomBtn {
-  z-index: 90000000000000000000000;
-  float: left;
+/* === Floating Buttons (Zoom, Routing, Print) === */
+#zoomBtn,
+#bestRouting,
+#btnPrint {
+  z-index: 9000000;
   position: absolute;
-  top: 60%;
   left: 1%;
 }
 
+#zoomBtn { top: 60%; }
+#bestRouting { top: 55%; }
+#btnPrint { top: 27%; border-radius: 22px; background: steelblue; }
+
+/* === Sidebar === */
 #sidebar.hidden {
   transform: translateX(100%);
-
+  
+    max-height: max-content;
 }
-div#sidebar {
+
+#sidebar {
   background-color: aliceblue;
-
+overflow-y: auto;
 }
 
-/* bestRouting */
-#bestRouting {
-  z-index: 998;
-  float: left;
-  position: absolute;
-  top: 55%;
-  left: 1%;
-}
-/* button#bestRouting {
-   /* border-radius: 22px; */
-/* background: steelblue; */
-
-/* map scalebar */
+/* === Map Scale Bar === */
 .leaflet-control-scale {
-  background-color: rgb(255, 255, 255);
+  background-color: #fff;
   padding: 4px 8px;
   border: 2px solid #333;
   border-radius: 10px;
@@ -55,95 +52,75 @@ div#sidebar {
   height: 20px;
 }
 
-/* btnPrint */
-#btnPrint {
-  z-index: 90000000000000000000000;
-  float: left;
-  position: absolute;
-  top: 27%;
-  left: 1%;
-}
-button#btnPrint {
-  border-radius: 22px;
-  background: steelblue;
-}
-
+/* === Floating Controls Panels === */
 #floatingControl {
   position: absolute;
   top: 9%;
-  left: 4%; /* أو left: 10px; لو عايزة على الشمال */
+  left: 4%;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.697);
   border-radius: 10px;
   width: 260px;
+
+  /* جديد لمعالجة الـ overflow */
+  max-height: 80vh; /* أقصى ارتفاع */
+  overflow-y: auto; /* Scroll رأسي */
+}
+#floatingControl::-webkit-scrollbar {
+  width: 6px;
+}
+#floatingControl::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+#floatingControl::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
-button#downloadData {
-  font-weight: 500;
-}
 
-#floatingControll {
-  position: absolute;
-  top: 12%;
-  left: 5%; /* أو left: 10px; لو عايزة على الشمال */
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.697);
-  border-radius: 10px;
-  width: 260px;
-}
+#floatingControl { top: 9%; left: 4%; }
+#floatingControll { top: 12%; left: 5%; background: #faebd7; }
 
-/* Nav */
+/* === Navbar === */
 nav.navbar.navbar-expand-lg {
-  background: #000000;
+  background: #000;
 }
+
 a.navbar-brand {
   color: antiquewhite;
   font-size: x-large;
 }
-div#floatingControll {
-  background: #faebd7;
-}
-section.two.m-2.text-center {
-  background-color: aliceblue;
-}
+
+/* === Sections === */
+section.two.m-2.text-center,
 .bBody {
   background-color: aliceblue;
 }
 
-/* card */
+/* === Card === */
 #card {
   display: flex;
-  flex-direction: column; /* هذا السطر هو المفتاح */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 15%;
+  top: 20%;
   left: 3%;
   right: 3%;
   bottom: 2%;
   z-index: 1000;
-  
+  background-color: rgba(255, 255, 255, 0.89);
 }
-div#card {
-  --bs-bg-opacity: 1;
-  background-color: rgb(255 255 255 / 89%);
-     
-}
-h5.fw-bold.mb-2 {
-  color: #000000;
-  font-size: x-large;
-}
-p.mb-0.small.text-muted {
-  font-size: x-large;
-}
+
+h5.fw-bold.mb-2 { color: #000; font-size: x-large; }
+p.mb-0.small.text-muted { font-size: x-large; }
+
+/* === Loading Screen === */
 #loading {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #ffffff;
-  z-index: 9999999999999999999999999999999999999999999999999999999;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background-color: #fff;
+  z-index: 999999999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,107 +128,93 @@ p.mb-0.small.text-muted {
   color: #005c6d;
 }
 
+/* === Loading Animation === */
 .sk-chase {
-  width: 40px;
-  height: 40px;
+  width: 40px; height: 40px;
   position: relative;
   animation: sk-chase 2.5s infinite linear both;
 }
 
 .sk-chase-dot {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   position: absolute;
-  left: 0;
-  top: 0;
   animation: sk-chase-dot 2s infinite ease-in-out both;
 }
 
 .sk-chase-dot:before {
-  content: "";
+  content: '';
   display: block;
-  width: 25%;
-  height: 25%;
+  width: 25%; height: 25%;
   background-color: #005c6d;
   border-radius: 100%;
   animation: sk-chase-dot-before 2s infinite ease-in-out both;
 }
 
-.sk-chase-dot:nth-child(1) {
-  animation-delay: -1.1s;
-}
-.sk-chase-dot:nth-child(2) {
-  animation-delay: -1s;
-}
-.sk-chase-dot:nth-child(3) {
-  animation-delay: -0.9s;
-}
-.sk-chase-dot:nth-child(4) {
-  animation-delay: -0.8s;
-}
-.sk-chase-dot:nth-child(5) {
-  animation-delay: -0.7s;
-}
-.sk-chase-dot:nth-child(6) {
-  animation-delay: -0.6s;
-}
-.sk-chase-dot:nth-child(1):before {
-  animation-delay: -1.1s;
-}
-.sk-chase-dot:nth-child(2):before {
-  animation-delay: -1s;
-}
-.sk-chase-dot:nth-child(3):before {
-  animation-delay: -0.9s;
-}
-.sk-chase-dot:nth-child(4):before {
-  animation-delay: -0.8s;
-}
-.sk-chase-dot:nth-child(5):before {
-  animation-delay: -0.7s;
-}
-.sk-chase-dot:nth-child(6):before {
-  animation-delay: -0.6s;
-}
+.sk-chase-dot:nth-child(1) { animation-delay: -1.1s; }
+.sk-chase-dot:nth-child(2) { animation-delay: -1s; }
+.sk-chase-dot:nth-child(3) { animation-delay: -0.9s; }
+.sk-chase-dot:nth-child(4) { animation-delay: -0.8s; }
+.sk-chase-dot:nth-child(5) { animation-delay: -0.7s; }
+.sk-chase-dot:nth-child(6) { animation-delay: -0.6s; }
 
-@keyframes sk-chase {
-  100% {
-    transform: rotate(360deg);
-  }
-}
+.sk-chase-dot:nth-child(1):before { animation-delay: -1.1s; }
+.sk-chase-dot:nth-child(2):before { animation-delay: -1s; }
+.sk-chase-dot:nth-child(3):before { animation-delay: -0.9s; }
+.sk-chase-dot:nth-child(4):before { animation-delay: -0.8s; }
+.sk-chase-dot:nth-child(5):before { animation-delay: -0.7s; }
+.sk-chase-dot:nth-child(6):before { animation-delay: -0.6s; }
 
-@keyframes sk-chase-dot {
-  80%,
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
+@keyframes sk-chase { 100% { transform: rotate(360deg); } }
+@keyframes sk-chase-dot { 80%, 100% { transform: rotate(360deg); } }
 @keyframes sk-chase-dot-before {
-  50% {
-    transform: scale(0.4);
+  50% { transform: scale(0.4); }
+  100%, 0% { transform: scale(1); }
+}
+
+/* === Data Display Box === */
+#dataDisplay {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: aliceblue;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Scrollbar */
+#dataDisplay::-webkit-scrollbar { width: 6px; }
+#dataDisplay::-webkit-scrollbar-thumb {
+  background: #888; border-radius: 4px;
+}
+#dataDisplay::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* === Responsive for Mobile === */
+@media (max-width: 768px) {
+  #dataDisplay {
+    max-height: 200px;
+    font-size: 13px;
+    width: 90%;
+    margin: auto;
   }
-  100%,
-  0% {
-    transform: scale(1);
+
+  #zoomBtn, #bestRouting, #btnPrint {
+    left: auto;
+    right: 2%;
+    transform: scale(0.9);
+  }
+
+  #floatingControl, #floatingControll {
+    width: 90%;
+    left: 5%;
   }
 }
-/* Sidebar */
-#sidebar {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    max-height: 90vh;
+div#sidebar {
+    width: 280px;
+    z-index: 10010;
+    left: 44px;
     overflow-y: auto;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-}
-#sidebar h5 {
-    font-size: 1rem;
-    color: #333;
-}
-#sidebar select, 
-#sidebar input {
-    font-size: 0.9rem;
-}
-#sidebar button {
-    font-size: 0.85rem;
+    max-height: -webkit-fill-available;
 }
